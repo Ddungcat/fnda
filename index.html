@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8F & 9F 리뉴얼 프로모션 기획안</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;700&display=swap');
+
+    :root {
+        --dusty-pink: #D1A3A4;
+        --light-gray: #F5F5F5;
+        --white: #FFFFFF;
+        --dark-text: #2C2C2C;
+        --muted-text: #7A7A7A;
+        --nav-height: 70px;
+    }
+    
+    body { 
+        margin: 0; 
+        font-family: 'Noto Sans KR', sans-serif; 
+        color: var(--dark-text); 
+        background-color: var(--light-gray); 
+        line-height: 1.6; 
+        padding-top: var(--nav-height); 
+    }
+    
+    h1, h2, h3, h4 { 
+        font-family: 'Playfair Display', serif; 
+        font-weight: 700; 
+        margin: 0; 
+    }
+    
+    .script { 
+        font-family: 'Dancing Script', cursive; 
+        color: var(--dusty-pink); 
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-height);
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid var(--dusty-pink);
+    }
+    
+    .navbar button {
+        background: none;
+        border: none;
+        color: var(--dark-text);
+        font-weight: 500;
+        margin: 0 25px;
+        padding: 10px 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    
+    .navbar button:hover {
+        color: var(--dusty-pink);
+    }
+
+    /* Active state for the currently selected menu */
+    .navbar button.active {
+        color: var(--dusty-pink);
+        font-weight: 700;
+        border-bottom: 2px solid var(--dusty-pink);
+    }
+
+    .hero {
+        background-color: var(--white);
+        color: var(--dark-text);
+        text-align: center;
+        padding: 80px 20px;
+        position: relative;
+    }
+    .hero h1 { font-size: 3rem; letter-spacing: 2px; text-transform: uppercase; line-height: 1.2; }
+    .hero .script { font-size: 2.5rem; margin-top: 10px; display: block; }
+    .hero p { margin-top: 20px; font-size: 1.1rem; font-weight: 300; color: var(--muted-text); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; min-height: 50vh; }
+
+    .page-content {
+        display: none; /* Hide all pages initially */
+        animation: fadeIn 0.4s ease-in-out;
+    }
+    
+    .page-content.active-page {
+        display: block; /* Only show the active page */
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .phase-section {
+        background: var(--white);
+        padding: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        border-radius: 12px; 
+    }
+    
+    .phase-header {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+    
+    .phase-header h2 { font-size: 2.2rem; margin-right: 15px; color: var(--dark-text); }
+    .phase-header span { font-size: 1.1rem; color: var(--muted-text); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+
+    .intent-box {
+        background-color: #FAFAFA;
+        padding: 30px;
+        border-left: 4px solid var(--dusty-pink);
+        font-size: 1rem;
+        color: var(--muted-text);
+        line-height: 1.8;
+    }
+    .intent-box strong { color: var(--dark-text); font-family: 'Playfair Display', serif; font-size: 1.3rem; display: block; margin-bottom: 12px; }
+
+    .video-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        max-width: 340px;
+        position: relative;
+        padding-bottom: 177.78%; /* 9:16 Aspect Ratio */
+        overflow: hidden;
+        border-radius: 16px; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: #000;
+    }
+
+    /* Footer */
+    .footer { background: var(--white); text-align: center; padding: 40px 20px; margin-top: 60px; border-top: 1px solid #eee; }
+    .footer p { font-size: 0.85rem; color: var(--muted-text); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+        .navbar button { margin: 0 12px; font-size: 0.85rem; }
+        .phase-header { flex-direction: column; }
+        .phase-header h2 { margin-bottom: 10px; }
+        .phase-section { padding: 30px 20px; }
+        .hero h1 { font-size: 2.2rem; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <button onclick="switchPage('phase1', this)" class="nav-btn active">Phase 1</button>
+    <button onclick="switchPage('phase2', this)" class="nav-btn">Phase 2</button>
+    <button onclick="switchPage('phase3', this)" class="nav-btn">Phase 3</button>
+</nav>
+
+<header class="hero">
+    <h1>PR Campaign Plan</h1>
+    <span class="script">Execution Strategy</span>
+    <p>백화점 공간 기획 및 PR 실행 계획: 8F-9F FAMILY & LIFESTYLE CULTURE ZONE</p>
+</header>
+
+<main class="container">
+    
+    <div id="phase1" class="page-content active-page">
+        <section class="phase-section">
+            <div class="phase-header">
+                <h2>PHASE 1</h2>
+                <span>티저 포스터 2종 (MOM IS EXHAUSTED)</span>
+            </div>
+            
+            <div class="intent-box">
+                <strong>기획 의도</strong>
+                육아맘이라면 누구나 겪는 '지친 엄마와 에너지가 넘치는 아이'라는 상반된 상황을 직관적인 타이포그래피와 일러스트로 표현하여 깊은 공감대를 형성합니다. "See you at the 8th floor!"라는 짧은 문구만 노출하여, 8층 공간이 이 고충을 어떻게 해결해 줄 것인지에 대한 호기심과 기대감을 극대화하는 티징(Teasing) 목적의 홍보물입니다.
+            </div>
+        </section>
+    </div>
+
+    <div id="phase2" class="page-content">
+        <section class="phase-section">
+            <div class="phase-header">
+                <h2>PHASE 2</h2>
+                <span>숏폼 영상 (SHORT-FORM VIDEO)</span>
+            </div>
+            
+            <div class="intent-box">
+                <strong>기획 의도</strong>
+                엄마와 아이가 백화점에 도착해서 쇼핑하고 휴식하기까지의 실제 여정을 속도감 있게 보여주어 공간의 편의성을 직관적으로 설득합니다. 유모차 전용 동선, 스마트폰 앱을 통한 식당 아기 의자 실시간 확인 등 구체적인 유아 친화 서비스를 시각화하고, 8층(아이의 신나는 체험)과 9층(통유리 뷰 카페에서의 엄마의 휴식)이 완벽하게 연계됨을 강조합니다.
+            </div>
+
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video controls loop muted playsinline>
+                        <source src="쇼츠영상.mp4" type="video/mp4">
+                        브라우저가 비디오 태그를 지원하지 않습니다.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="phase3" class="page-content">
+        <section class="phase-section">
+            <div class="phase-header">
+                <h2>PHASE 3</h2>
+                <span>카드뉴스 5종 (FAMILY SHOPPING GUIDE)</span>
+            </div>
+            
+            <div class="intent-box">
+                <strong>기획 의도</strong>
+                문화센터 수업 후의 동선 고민을 짚어내며, 8층과 9층 공간의 상세한 기능과 가치를 논리적으로 안내하는 정보 전달형(Guide) 홍보물입니다. 8층을 '직접 경험하는 놀이터(RUN, STYLE, PLAY, TOUCH)'로 명명하고, 9층을 '함께 쉬는 시간(EAT, REST, VIEW)'으로 정리하여 육아맘들이 필요로 하는 핵심 정보(수유실, 뷰 카페 등)를 한눈에 파악하고 저장하도록 유도합니다.
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p>Department Store Space & PR Strategy | Execution Plan</p>
+</footer>
+
+<script>
+    function switchPage(pageId, btnElement) {
+        // 1. 모든 페이지 콘텐츠 숨기기
+        const pages = document.querySelectorAll('.page-content');
+        pages.forEach(page => {
+            page.classList.remove('active-page');
+        });
+
+        // 2. 선택된 페이지 콘텐츠만 보이기
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active-page');
+        }
+
+        // 3. 모든 메뉴 버튼의 활성화 스타일 제거
+        const btns = document.querySelectorAll('.nav-btn');
+        btns.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 4. 클릭한 메뉴 버튼에만 활성화 스타일 추가
+        if (btnElement) {
+            btnElement.classList.add('active');
+        }
+        
+        // 5. 페이지 전환 시 스크롤을 최상단 뷰로 부드럽게 이동 (옵션)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
