@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <title>백화점 공간 홍보 기획</title>
 <style>
-  /* 구글 폰트 불러오기: 메인 제목용 세리프, 서브 제목/꾸밈용 필기체 */
+  /* 구글 폰트: 메인 제목용 세리프, 서브 제목 및 타이포그래피용 필기체 */
   @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
   
   body {
-    /* 사진과 유사한 톤다운된 자주빛/모브 배경 적용 */
+    /* Y2K 레트로 스타일의 톤다운된 자주빛 배경 */
     background-color: #a87b8d;
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
     margin: 0;
@@ -18,30 +18,11 @@
   
   header {
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 30px 20px 10px;
     position: relative;
   }
   
-  .main-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5em;
-    color: white;
-    margin: 0;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    letter-spacing: 2px;
-  }
-  
-  .sub-title {
-    font-family: 'Caveat', cursive;
-    font-size: 2.5em;
-    color: #f4e8e1;
-    margin-top: -15px;
-    transform: rotate(-3deg);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-  }
-  
-  /* 바코드/QR코드 등 레트로한 요소를 대신하는 점선 네비게이션 */
+  /* 바코드/QR코드 느낌을 대체하는 점선 네비게이션바 */
   nav {
     background: #fff;
     padding: 15px;
@@ -49,6 +30,10 @@
     border-top: 3px dashed #333;
     border-bottom: 3px dashed #333;
     margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
   }
   
   nav a {
@@ -56,13 +41,14 @@
     font-weight: bold;
     text-decoration: none;
     color: #a87b8d;
-    margin: 0 20px;
-    font-size: 1.3em;
+    margin: 0 10px;
+    font-size: 1.2em;
     cursor: pointer;
     transition: color 0.3s;
+    text-transform: uppercase;
   }
   
-  nav a:hover {
+  nav a:hover, nav a.current {
     color: #333;
     text-decoration: underline;
   }
@@ -84,7 +70,7 @@
     to { opacity: 1; transform: translateY(0); } 
   }
   
-  /* 그리드 기반의 스크랩북 레이아웃 */
+  /* 스크랩북 그리드 레이아웃 */
   .scrapbook-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,7 +78,7 @@
     align-items: center;
   }
   
-  /* 폴라로이드 사진 스타일 */
+  /* 폴라로이드 및 마스킹 테이프 효과 */
   .polaroid {
     background: white;
     padding: 10px 10px 45px 10px;
@@ -105,7 +91,6 @@
     transform: rotate(-3deg);
   }
   
-  /* 반투명 마스킹 테이프 디테일 */
   .tape {
     width: 100px;
     height: 30px;
@@ -117,7 +102,7 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
   
-  /* 텍스트 설명용 컷아웃 박스 */
+  /* 텍스트 설명 박스 */
   .content-box {
     background: #fdfbf7;
     padding: 30px;
@@ -156,96 +141,185 @@
     text-align: center;
     padding: 20px;
   }
+  
+  /* 첫 페이지 전용 타이포그래피 믹스매치 스타일 */
+  .typo-art {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .typo-art .serif-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 4em;
+    color: white;
+    margin: 0;
+    line-height: 0.8;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  }
+  .typo-art .script-text {
+    font-family: 'Caveat', cursive;
+    font-size: 5em;
+    color: #333;
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    text-shadow: 2px 2px 0px #fff;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <h1 class="main-title">PR CAMPAIGN PLAN</h1>
-  <div class="sub-title">department store space 8F & 9F</div>
-  <!-- 흰색 별 모양 아이콘 장식 -->
-  <div style="color: white; font-size: 3em; position: absolute; top: 20px; right: 10%; transform: rotate(15deg);">★</div>
+  <!-- 우측 상단 별 장식 (Y2K 요소) -->
+  <div style="color: white; font-size: 3em; position: absolute; top: 10px; right: 10%; transform: rotate(15deg);">★</div>
 </header>
 
-<nav>
-  <a onclick="showPage('page1')">Teaser Poster</a>
-  <a onclick="showPage('page2')">Short-Form Video</a>
-  <a onclick="showPage('page3')">Card News</a>
+<nav id="navbar">
+  <a onclick="showPage('concept')" class="current">Concept</a>
+  <a onclick="showPage('target')">Target</a>
+  <a onclick="showPage('corevalue')">Core Value</a>
+  <a onclick="showPage('poster')">Poster</a>
+  <a onclick="showPage('shorts')">shorts</a>
+  <a onclick="showPage('cards')">Cards</a>
 </nav>
 
-<!-- Page 1: 티저 포스터 -->
-<div id="page1" class="page active">
+<!-- 1. Concept Page -->
+<div id="concept" class="page active">
+  <div class="typo-art">
+    <h1 class="serif-text">DEPARTMENT</h1>
+    <h2 class="script-text">Promotion</h2>
+  </div>
   <div class="scrapbook-grid">
     <div class="content-box">
-      <h2 class="section-title">Teaser Poster</h2>
-      <p><strong>MOM IS EXHAUSTED</strong></p>
-      <p>육아맘이라면 누구나 겪는 '지친 엄마와 에너지가 넘치는 아이'라는 상반된 상황을 직관적인 타이포그래피와 일러스트로 표현하여 깊은 공감대를 형성합니다.</p>
-      <p><strong>"See you at the 8th floor!"</strong></p>
-      <p>짧은 문구만 노출하여 8층 공간(Play Plaza)이 고충을 어떻게 해결해 줄 것인지에 대한 호기심과 기대감을 극대화하는 티징(Teasing) 목적의 홍보물입니다.</p>
+      <h2 class="section-title">Concept</h2>
+      <p>단순히 물건을 파는 곳을 넘어 상상이 현실이 되고 캐릭터 세계를 탐험하며 즐기는 <strong>체험형 공간</strong>과, 부모와 아이 모두 편안하게 머무를 수 있는 <strong>미식과 휴식이 공존하는 공간</strong>을 지향합니다.</p>
+      <ul style="padding-left: 20px;">
+        <li><strong>8F PLAY PLAZA:</strong> 체험형 패밀리 공간</li>
+        <li><strong>9F DINING & REST:</strong> 다이닝 & 릴렉스</li>
+      </ul>
     </div>
     <div class="polaroid">
       <div class="tape"></div>
-      <div class="image-placeholder" style="background: #2a2a2a; color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 2em; line-height:1.2;">
-        Mom is Exhausted<br><span style="font-size: 0.5em; color: #fff;">But Kids Are Happy</span>
+      <div class="image-placeholder" style="background: #8fa3a3; color: #fff;">
+        SPACE<br>PROPOSAL
       </div>
-      <div class="script-note">Teaser Poster #1 & #2</div>
+      <div class="script-note">8F - 9F Renewal</div>
     </div>
   </div>
 </div>
 
-<!-- Page 2: 숏폼 영상 -->
-<div id="page2" class="page">
+<!-- 2. Target Page -->
+<div id="target" class="page">
   <div class="scrapbook-grid">
     <div class="polaroid left-tilt">
       <div class="tape"></div>
-      <div class="image-placeholder" style="background: #e0d4c8; color: #555;">
-        [ 9:16 Vertical Video ]<br><br>아이 케어하면서<br>커피 한 잔의 여유☕
+      <div class="image-placeholder" style="background: #d4a5a5; color: #fff;">
+        For 3040<br>MOMS
       </div>
-      <div class="script-note">relaxing view cafe & play plaza</div>
+      <div class="script-note">Target Analysis</div>
     </div>
     <div class="content-box">
-      <h2 class="section-title">Short-form Video</h2>
-      <p><strong>아이와 함께여서 더 편한 공간</strong></p>
-      <p>엄마와 아이가 백화점에 도착해서 쇼핑하고 휴식하기까지의 실제 여정을 속도감 있게 보여주어 공간의 편의성을 직관적으로 설득합니다.</p>
-      <ul style="padding-left: 20px;">
-        <li><strong>8F 체험형 패밀리 공간:</strong> 아이의 신나는 4대 캐릭터 체험존</li>
-        <li><strong>9F 다이닝 & 릴렉스:</strong> 통유리 뷰 카페에서의 엄마의 여유로운 휴식</li>
-      </ul>
-      <p>앱을 통한 아기의자 확인 등 구체적인 유아 친화 서비스를 시각화하고 두 층이 완벽하게 연계됨을 강조합니다.</p>
+      <h2 class="section-title">Target</h2>
+      <p><strong>핵심 타깃</strong><br>육아와 일상을 병행하며 쇼핑과 휴식의 니즈를 동시에 가진 30~40대 육아맘 전체</p>
+      <p><strong>타깃 특성</strong><br>백화점 방문 시 문화센터, 쇼핑, 식사, 장보기를 한 번에 해결하는 '목적형' 방문 비중이 높습니다. 유모차와 짐으로 인한 이동 제약 및 아이 케어로 인한 체력적·시간적·심리적 압박 완화가 핵심 니즈입니다.</p>
     </div>
   </div>
 </div>
 
-<!-- Page 3: 카드뉴스 -->
-<div id="page3" class="page">
+<!-- 3. Core Value Page -->
+<div id="corevalue" class="page">
   <div class="scrapbook-grid">
     <div class="content-box">
-      <h2 class="section-title">Card News Guide</h2>
-      <p><strong>Family Shopping Guide</strong></p>
-      <p>문화센터 수업 후의 동선 고민을 짚어내며, 8층과 9층 공간의 상세한 기능과 가치를 논리적으로 안내하는 정보 전달형 홍보물입니다.</p>
-      <ul style="padding-left: 20px;">
-        <li><strong>8F PLAY:</strong> 직접 경험하는 놀이터 (RUN, STYLE, PLAY, TOUCH)</li>
-        <li><strong>9F REST:</strong> 함께 쉬는 시간 (EAT, REST, VIEW)</li>
-      </ul>
-      <p>육아맘들이 필요로 하는 핵심 정보(수유실, 뷰 카페 등)를 한눈에 파악하고 저장하도록 유도합니다.</p>
+      <h2 class="section-title">Core Value</h2>
+      <p><strong>8F 쇼핑의 놀이화 (PLAY PLAZA)</strong><br>
+      360도 개방형 소파존 중심의 부모 맞춤형 안심 휴게 공간과 4대 캐릭터 체험존(타요, 티니핑, 디즈니, 포켓몬)을 제공합니다.</p>
+      <p><strong>9F 여유로운 미식과 조망 (DINING & REST)</strong><br>
+      통유리로 8층을 조망하며 즐기는 뷰 카페와 유모차 전용 주차장, 프라이빗 베이비 케어룸이 완비된 패밀리 푸드코트를 운영합니다.</p>
     </div>
     <div class="polaroid">
+      <div class="tape"></div>
+      <div class="image-placeholder" style="background: #c5b4e3; color: #fff;">
+        CORE<br>STRATEGY
+      </div>
+      <div class="script-note">Play & Rest</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Poster Page -->
+<div id="poster" class="page">
+  <div class="scrapbook-grid">
+    <div class="polaroid left-tilt">
+      <div class="tape"></div>
+      <div class="image-placeholder" style="background: #2a2a2a; color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.5em; line-height:1.2;">
+        Mom is Exhausted<br><span style="font-size: 0.6em; color: #fff;">But Kids Are Happy</span>
+      </div>
+      <div class="script-note">Teaser #1 & #2</div>
+    </div>
+    <div class="content-box">
+      <h2 class="section-title">Teaser Poster</h2>
+      <p><strong>MOM IS EXHAUSTED</strong></p>
+      <p>지친 엄마와 에너지가 넘치는 아이라는 상황을 직관적인 타이포그래피와 일러스트로 표현합니다.</p>
+      <p>"See you at the 8th floor!"라는 짧은 문구로 8층 공간에 대한 호기심과 기대감을 극대화하는 티징 홍보물입니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Shorts Page -->
+<div id="shorts" class="page">
+  <div class="scrapbook-grid">
+    <div class="content-box">
+      <h2 class="section-title">Short-form Video</h2>
+      <p><strong>아이 케어하면서 커피 한 잔</strong></p>
+      <p>엄마와 아이가 쇼핑하고 휴식하기까지의 실제 여정을 속도감 있게 보여줍니다. 유모차 동선, 앱을 통한 아기 의자 확인 등 유아 친화 서비스를 시각화합니다.</p>
+      <p>8층(놀이)과 9층(휴식)이 완벽하게 연계됨을 강조하여 타깃층의 공감과 방문을 유도합니다.</p>
+    </div>
+    <div class="polaroid">
+      <div class="tape"></div>
+      <div class="image-placeholder" style="background: #e0d4c8; color: #555;">
+        [ 9:16 Vertical ]<br><br>▶ PLAY
+      </div>
+      <div class="script-note">View Cafe Reels</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. Cards Page -->
+<div id="cards" class="page">
+  <div class="scrapbook-grid">
+    <div class="polaroid left-tilt">
       <div class="tape"></div>
       <div class="image-placeholder" style="background: #c6d8d3; color: #333;">
         Slide 01 - 05<br><br>엄마의 휴식,<br>아이의 즐거움
       </div>
-      <div class="script-note">Info Guide for Moms</div>
+      <div class="script-note">Family Guide</div>
+    </div>
+    <div class="content-box">
+      <h2 class="section-title">Card News Guide</h2>
+      <p><strong>Family Shopping Guide</strong></p>
+      <p>문화센터 수업 후 어디 갈지 고민하는 육아맘을 위해 8, 9층의 상세 기능을 안내하는 정보 전달형 카드뉴스입니다.</p>
+      <p>8층을 '직접 경험하는 놀이터'로, 9층을 '함께 쉬는 시간'으로 정리하여 핵심 정보(수유실, 뷰 카페 등)를 한눈에 파악하고 저장하도록 유도합니다.</p>
     </div>
   </div>
 </div>
 
 <script>
-  // 메뉴 클릭 시 페이지(섹션)를 전환하는 JavaScript 함수
   function showPage(pageId) {
+    // 모든 페이지 숨김
     document.querySelectorAll('.page').forEach(page => {
       page.classList.remove('active');
     });
+    // 선택된 페이지 보이기
     document.getElementById(pageId).classList.add('active');
+    
+    // 네비게이션 메뉴 스타일 업데이트
+    document.querySelectorAll('nav a').forEach(link => {
+      link.classList.remove('current');
+    });
+    // 클릭한 메뉴에 current 클래스 추가
+    event.target.classList.add('current');
   }
 </script>
 </body>
