@@ -207,6 +207,7 @@
         <button class="nav-btn win-btn font-bold text-lg text-green-600" data-target="poster-page">🖼️ Poster</button>
         <button class="nav-btn win-btn font-bold text-lg text-orange-600" data-target="card-news-page">🗂️ Card News</button>
         <button class="nav-btn win-btn font-bold text-lg text-red-600" data-target="shorts-page">📼 Shorts</button>
+        <button class="nav-btn win-btn font-bold text-lg text-teal-600" data-target="survey-page">📝 Survey</button>
     </header>
 
     <main class="flex-1 relative p-4 md:p-8 overflow-y-auto w-full max-w-7xl mx-auto">
@@ -555,41 +556,107 @@
                     <!-- Phone Top -->
                     <div class="h-8 bg-pink-400 w-full flex justify-center items-center gap-2">
                         <div class="w-12 h-2 bg-pink-600 rounded-full"></div>
-                </div>
+                    </div>
                 
-                <!-- Screen Content (Shorts Video Concept) -->
-                <div class="flex-1 bg-black relative flex flex-col">
-                    <!-- Top overlay -->
-                    <div class="absolute top-4 left-4 z-10 text-white drop-shadow-md">
-                        <h2 class="font-bold text-lg">9F VIEW CAFE ☕</h2>
-                    </div>
-                    
-                    <!-- Video Area Fake -->
-                    <div class="flex-1 flex flex-col justify-center items-center text-center p-6 bg-gradient-to-b from-gray-800 to-black">
-                        <div class="text-6xl mb-4 animate-pulse">👩‍👧</div>
-                        <h3 class="text-2xl font-bold text-white mb-2 leading-tight font-['Pixelify_Sans']">아이 케어하면서<br>커피 한잔</h3>
-                        <p class="text-pink-300 font-bold bg-white/10 p-2 rounded">그동안 엄마는 9층 카페에서<br>아이 보며 커피 한잔의 여유~</p>
-                    </div>
+                    <!-- Screen Content (Shorts Video Concept) -->
+                    <div class="flex-1 bg-black relative flex flex-col">
+                        <!-- Top overlay -->
+                        <div class="absolute top-4 left-4 z-10 text-white drop-shadow-md">
+                            <h2 class="font-bold text-lg">9F VIEW CAFE ☕</h2>
+                        </div>
+                        
+                        <!-- Video Area Fake -->
+                        <div class="flex-1 flex flex-col justify-center items-center text-center p-6 bg-gradient-to-b from-gray-800 to-black">
+                            <div class="text-6xl mb-4 animate-pulse">👩‍👧</div>
+                            <h3 class="text-2xl font-bold text-white mb-2 leading-tight font-['Pixelify_Sans']">아이 케어하면서<br>커피 한잔</h3>
+                            <p class="text-pink-300 font-bold bg-white/10 p-2 rounded">그동안 엄마는 9층 카페에서<br>아이 보며 커피 한잔의 여유~</p>
+                        </div>
 
-                    <!-- Right side buttons -->
-                    <div class="absolute right-2 bottom-20 flex flex-col gap-4 text-white text-2xl z-10">
-                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-pink-500">❤️</span><span class="text-xs mt-1">10.2K</span></div>
-                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">💬</span><span class="text-xs mt-1">128</span></div>
-                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">🔗</span><span class="text-xs mt-1">Share</span></div>
-                    </div>
+                        <!-- Right side buttons -->
+                        <div class="absolute right-2 bottom-20 flex flex-col gap-4 text-white text-2xl z-10">
+                            <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-pink-500">❤️</span><span class="text-xs mt-1">10.2K</span></div>
+                            <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">💬</span><span class="text-xs mt-1">128</span></div>
+                            <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">🔗</span><span class="text-xs mt-1">Share</span></div>
+                        </div>
 
-                    <!-- Bottom caption -->
-                    <div class="absolute bottom-4 left-4 right-16 text-white z-10">
-                        <p class="text-sm font-bold">@department_space</p>
-                        <p class="text-xs text-gray-300 mt-1 line-clamp-2">유모차 전용 동선부터 스마트폰 앱 아기 의자 확인까지! 8층 체험존과 9층 뷰카페의 완벽한 연계 ✨ #육아맘 #백화점나들이</p>
-                    </div>
-                    
-                    <!-- Progress bar -->
-                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-600 z-10">
-                        <div class="h-full bg-pink-500 w-1/2 relative">
-                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
+                        <!-- Bottom caption -->
+                        <div class="absolute bottom-4 left-4 right-16 text-white z-10">
+                            <p class="text-sm font-bold">@department_space</p>
+                            <p class="text-xs text-gray-300 mt-1 line-clamp-2">유모차 전용 동선부터 스마트폰 앱 아기 의자 확인까지! 8층 체험존과 9층 뷰카페의 완벽한 연계 ✨ #육아맘 #백화점나들이</p>
+                        </div>
+                        
+                        <!-- Progress bar -->
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-600 z-10">
+                            <div class="h-full bg-pink-500 w-1/2 relative">
+                                <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Survey Page -->
+        <div id="survey-page" class="page-content max-w-5xl mx-auto">
+            <div class="win-border bg-white p-6 shadow-xl mb-8">
+                <div class="win-title-bar dark mb-6">
+                    <span>PRE_SURVEY_FORMS.exe</span>
+                    <div class="win-controls"><button>_</button><button>□</button><button>X</button></div>
+                </div>
+                
+                <div class="text-center mb-8">
+                    <p class="bg-teal-100 inline-block px-4 py-2 font-bold border-2 border-black border-dashed font-sans text-teal-900 shadow-[2px_2px_0_#000]">
+                        고객님의 소중한 의견을 들려주세요! (카드 클릭 시 새 창 열림 ↗)
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
+                    
+                    <!-- Survey Card 1 -->
+                    <a href="https://forms.gle/dfrE2nHRrjLHnG4w6" target="_blank" rel="noopener noreferrer" class="win-border-inset p-5 bg-pink-50 hover:bg-pink-200 transition-colors block group cursor-pointer shadow-md hover:shadow-inner transform hover:translate-y-1">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="text-3xl filter drop-shadow-sm">📋</span>
+                            <h4 class="font-bold text-sm text-pink-900 group-hover:underline">백화점 8F/9F 패밀리 & 라이프스타일 컬처존 이용 경험 및 만족도 조사</h4>
+                        </div>
+                        <div class="text-xs font-bold text-pink-600 mt-2 text-right">Open Link ↗</div>
+                    </a>
+                    
+                    <!-- Survey Card 2 -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdehs0Xii5rgyIoRenn43edNm1_HJk1fPFWPb5ykcSHWGp-dQ/viewform" target="_blank" rel="noopener noreferrer" class="win-border-inset p-5 bg-purple-50 hover:bg-purple-200 transition-colors block group cursor-pointer shadow-md hover:shadow-inner transform hover:translate-y-1">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="text-3xl filter drop-shadow-sm">📝</span>
+                            <h4 class="font-bold text-sm text-purple-900 group-hover:underline">[사전 수요조사] 8-9F 패밀리 & 라이프스타일 공간 리뉴얼 고객 조사</h4>
+                        </div>
+                        <div class="text-xs font-bold text-purple-600 mt-2 text-right">Open Link ↗</div>
+                    </a>
+
+                    <!-- Survey Card 3 -->
+                    <a href="https://docs.google.com/forms/d/1p-2DYItur2IltwtX-JAsAHvo7xHw3tp-GvBLcj11GIo/edit" target="_blank" rel="noopener noreferrer" class="win-border-inset p-5 bg-blue-50 hover:bg-blue-200 transition-colors block group cursor-pointer shadow-md hover:shadow-inner transform hover:translate-y-1">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="text-3xl filter drop-shadow-sm">📊</span>
+                            <h4 class="font-bold text-sm text-blue-900 group-hover:underline">[사전 수요조사] 백화점 8F·9F 패밀리 & 라이프스타일 존 리뉴얼 고객 설문</h4>
+                        </div>
+                        <div class="text-xs font-bold text-blue-600 mt-2 text-right">Open Link ↗</div>
+                    </a>
+
+                    <!-- Survey Card 4 -->
+                    <a href="https://docs.google.com/forms/d/1wpQkqW23WvPe82IaprVbPjzlDRHRlPWTfDYRa8Ly2AA/edit" target="_blank" rel="noopener noreferrer" class="win-border-inset p-5 bg-green-50 hover:bg-green-200 transition-colors block group cursor-pointer shadow-md hover:shadow-inner transform hover:translate-y-1">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="text-3xl filter drop-shadow-sm">💡</span>
+                            <h4 class="font-bold text-sm text-green-900 group-hover:underline">[사전 수요 조사] 8F/9F 공존형 리테일 CX 공간 사전 설문</h4>
+                        </div>
+                        <div class="text-xs font-bold text-green-600 mt-2 text-right">Open Link ↗</div>
+                    </a>
+
+                    <!-- Survey Card 5 -->
+                    <a href="https://docs.google.com/forms/d/1OEQKwzdT4OwcCikGDTu1C8GplBfNJ-HVUjKdAGe1kU0/edit#responses4" target="_blank" rel="noopener noreferrer" class="win-border-inset p-5 bg-yellow-50 hover:bg-yellow-200 transition-colors block group cursor-pointer shadow-md hover:shadow-inner transform hover:translate-y-1 lg:col-start-2">
+                        <div class="flex items-start gap-3 mb-4">
+                            <span class="text-3xl filter drop-shadow-sm">🏢</span>
+                            <h4 class="font-bold text-sm text-yellow-900 group-hover:underline">[신세계 센텀시티점] 패밀리 리테일 존 리뉴얼 사전 수요조사</h4>
+                        </div>
+                        <div class="text-xs font-bold text-yellow-600 mt-2 text-right">Open Link ↗</div>
+                    </a>
+
                 </div>
             </div>
         </div>
