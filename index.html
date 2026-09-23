@@ -1,326 +1,675 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>백화점 공간 홍보 기획</title>
-<style>
-  /* 구글 폰트: 메인 제목용 세리프, 서브 제목 및 타이포그래피용 필기체 */
-  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
-  
-  body {
-    /* Y2K 레트로 스타일의 톤다운된 자주빛 배경 */
-    background-color: #a87b8d;
-    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
-  
-  header {
-    text-align: center;
-    padding: 30px 20px 10px;
-    position: relative;
-  }
-  
-  /* 바코드/QR코드 느낌을 대체하는 점선 네비게이션바 */
-  nav {
-    background: #fff;
-    padding: 15px;
-    text-align: center;
-    border-top: 3px dashed #333;
-    border-bottom: 3px dashed #333;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  nav a {
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    text-decoration: none;
-    color: #a87b8d;
-    margin: 0 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: color 0.3s;
-    text-transform: uppercase;
-  }
-  
-  nav a:hover, nav a.current {
-    color: #333;
-    text-decoration: underline;
-  }
-  
-  .page {
-    display: none;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .active {
-    display: block;
-    animation: fadeIn 0.6s ease-in-out;
-  }
-  
-  @keyframes fadeIn { 
-    from { opacity: 0; transform: translateY(10px); } 
-    to { opacity: 1; transform: translateY(0); } 
-  }
-  
-  /* 스크랩북 그리드 레이아웃 */
-  .scrapbook-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
-  }
-  
-  /* 폴라로이드 및 마스킹 테이프 효과 */
-  .polaroid {
-    background: white;
-    padding: 10px 10px 45px 10px;
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
-    position: relative;
-    transform: rotate(2deg);
-  }
-  
-  .polaroid.left-tilt {
-    transform: rotate(-3deg);
-  }
-  
-  .tape {
-    width: 100px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.7);
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-2deg);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  
-  /* 텍스트 설명 박스 */
-  .content-box {
-    background: #fdfbf7;
-    padding: 30px;
-    box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.4);
-    font-size: 1.05em;
-    line-height: 1.7;
-    border: 1px solid #ddd;
-  }
-  
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2em;
-    color: #a87b8d;
-    border-bottom: 2px solid #a87b8d;
-    display: inline-block;
-    margin-bottom: 15px;
-    margin-top: 0;
-  }
-  
-  .script-note {
-    font-family: 'Caveat', cursive;
-    color: #555;
-    font-size: 1.5em;
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .image-placeholder {
-    background: #444; 
-    height: 250px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: #fff; 
-    font-weight: bold;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* 첫 페이지 전용 타이포그래피 믹스매치 스타일 */
-  .typo-art {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-  }
-  .typo-art .serif-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 4em;
-    color: white;
-    margin: 0;
-    line-height: 0.8;
-    text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
-  }
-  .typo-art .script-text {
-    font-family: 'Caveat', cursive;
-    font-size: 5em;
-    color: #333;
-    margin: 0;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-5deg);
-    text-shadow: 2px 2px 0px #fff;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Promotion - Y2K Space Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --win95-bg: #c0c0c0;
+            --win95-border-light: #ffffff;
+            --win95-border-dark: #000000;
+            --win95-border-gray: #808080;
+            --y2k-pink: #ff66cc;
+            --y2k-purple: #9966ff;
+            --y2k-blue: #00ccff;
+            --y2k-pastel-bg: #f5e6fd;
+        }
+
+        body {
+            font-family: 'Pixelify Sans', 'Courier New', Courier, monospace;
+            background-color: var(--y2k-pastel-bg);
+            /* Y2K Starry/Grid Background */
+            background-image: 
+                radial-gradient(#ffb3e6 1px, transparent 1px),
+                radial-gradient(#b3d9ff 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #333;
+            overflow-x: hidden;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Windows 95 Style Borders */
+        .win-border {
+            background-color: var(--win95-bg);
+            border: 2px solid;
+            border-top-color: var(--win95-border-light);
+            border-left-color: var(--win95-border-light);
+            border-bottom-color: var(--win95-border-dark);
+            border-right-color: var(--win95-border-dark);
+            box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px var(--win95-border-gray);
+        }
+
+        .win-border-inset {
+            background-color: #fff;
+            border: 2px solid;
+            border-top-color: var(--win95-border-gray);
+            border-left-color: var(--win95-border-gray);
+            border-bottom-color: var(--win95-border-light);
+            border-right-color: var(--win95-border-light);
+        }
+
+        /* Windows 95 Title Bar */
+        .win-title-bar {
+            background: linear-gradient(90deg, var(--y2k-pink), var(--y2k-blue));
+            color: white;
+            padding: 3px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .win-title-bar.purple { background: linear-gradient(90deg, var(--y2k-purple), var(--y2k-pink)); }
+        .win-title-bar.dark { background: linear-gradient(90deg, #000080, #1084d0); }
+
+        /* Buttons */
+        .win-btn {
+            background-color: var(--win95-bg);
+            border: 2px solid;
+            border-top-color: var(--win95-border-light);
+            border-left-color: var(--win95-border-light);
+            border-bottom-color: var(--win95-border-dark);
+            border-right-color: var(--win95-border-dark);
+            padding: 4px 12px;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px var(--win95-border-gray);
+            transition: all 0.1s;
+        }
+        .win-btn:active, .win-btn.active {
+            border-top-color: var(--win95-border-dark);
+            border-left-color: var(--win95-border-dark);
+            border-bottom-color: var(--win95-border-light);
+            border-right-color: var(--win95-border-light);
+            box-shadow: inset 1px 1px var(--win95-border-gray);
+            padding: 5px 11px 3px 13px;
+            background-color: #e0e0e0;
+        }
+
+        /* Window controls (X, [] , _ ) */
+        .win-controls button {
+            width: 16px;
+            height: 14px;
+            font-size: 10px;
+            line-height: 10px;
+            padding: 0;
+            margin-left: 2px;
+            background-color: var(--win95-bg);
+            border: 1px solid var(--win95-border-light);
+            border-bottom-color: var(--win95-border-dark);
+            border-right-color: var(--win95-border-dark);
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+        
+        /* 3D Typography */
+        .text-3d {
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 
+                3px 3px 0 var(--y2k-pink),
+                6px 6px 0 var(--y2k-purple),
+                9px 9px 0 var(--y2k-blue),
+                12px 12px 0 #000;
+            line-height: 1.1;
+            text-align: center;
+            letter-spacing: -2px;
+            font-family: 'Pixelify Sans', cursive;
+        }
+        @media (min-width: 768px) {
+            .text-3d { font-size: 6rem; letter-spacing: -4px; }
+        }
+
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: #fff;
+            color: var(--y2k-pink);
+            padding: 4px 0;
+            border-bottom: 2px dashed var(--y2k-purple);
+            font-weight: bold;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 16px;
+            background: var(--win95-bg);
+            border-left: 1px solid var(--win95-border-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--win95-bg);
+            border: 2px solid;
+            border-top-color: var(--win95-border-light);
+            border-left-color: var(--win95-border-light);
+            border-bottom-color: var(--win95-border-dark);
+            border-right-color: var(--win95-border-dark);
+        }
+
+        /* Page Management */
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: popIn 0.3s ease-out forwards; }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pixel-border {
+            border: 4px solid;
+            border-image: repeating-linear-gradient(45deg, var(--y2k-pink), var(--y2k-pink) 10px, var(--y2k-blue) 10px, var(--y2k-blue) 20px) 10;
+        }
+    </style>
 </head>
 <body>
+    <!-- Top Marquee -->
+    <div class="marquee-container text-sm">
+        <div class="marquee-text">
+            ✦ NEW DROP ALERT! ✦ CHECK OUT THE SPACE PROMOTION ✦ WELCOME TO THE 8F PLAY PLAZA & 9F VIEW CAFE ✦ Y2K VIBES ONLY ✦
+        </div>
+    </div>
 
-<header>
-  <!-- 우측 상단 별 장식 (Y2K 요소) -->
-  <div style="color: white; font-size: 3em; position: absolute; top: 10px; right: 10%; transform: rotate(15deg);">★</div>
-</header>
+    <!-- Navigation Menu (Header) -->
+    <header class="p-4 flex flex-wrap justify-center gap-3 border-b-4 border-black bg-white/60 backdrop-blur-md z-20 sticky top-0">
+        <!-- Home icon button -->
+        <button class="nav-btn win-btn font-bold text-lg flex items-center gap-2 active" data-target="home-page">
+            <span>🏠</span> Home
+        </button>
+        <!-- 6 Main Menus (English) -->
+        <button class="nav-btn win-btn font-bold text-lg text-pink-600" data-target="concept-page">📁 Concept</button>
+        <button class="nav-btn win-btn font-bold text-lg text-purple-600" data-target="target-page">🎯 Target</button>
+        <button class="nav-btn win-btn font-bold text-lg text-blue-600" data-target="core-value-page">💎 Core Value</button>
+        <button class="nav-btn win-btn font-bold text-lg text-green-600" data-target="poster-page">🖼️ Poster</button>
+        <button class="nav-btn win-btn font-bold text-lg text-orange-600" data-target="card-news-page">🗂️ Card News</button>
+        <button class="nav-btn win-btn font-bold text-lg text-red-600" data-target="shorts-page">📼 Shorts</button>
+    </header>
 
-<nav id="navbar">
-  <a onclick="showPage('concept')" class="current">Concept</a>
-  <a onclick="showPage('target')">Target</a>
-  <a onclick="showPage('corevalue')">Core Value</a>
-  <a onclick="showPage('poster')">Poster</a>
-  <a onclick="showPage('shorts')">shorts</a>
-  <a onclick="showPage('cards')">Cards</a>
-</nav>
+    <main class="flex-1 relative p-4 md:p-8 overflow-y-auto w-full max-w-7xl mx-auto">
+        
+        <!-- 1. Home Page (바탕화면 컨셉) -->
+        <div id="home-page" class="page-content active h-full min-h-[70vh] relative">
+            
+            <!-- Quick Links Sidebar -->
+            <div class="win-border absolute left-0 top-0 w-48 hidden lg:block bg-white z-10 shadow-lg">
+                <div class="win-title-bar dark">
+                    <span>C:\quick_links</span>
+                    <div class="win-controls"><button>X</button></div>
+                </div>
+                <div class="p-2 space-y-1 text-sm font-sans">
+                    <button class="w-full text-left p-1 hover:bg-blue-600 hover:text-white cursor-pointer" onclick="document.querySelector('[data-target=\'concept-page\']').click()">☆ 8F Play Plaza</button>
+                    <button class="w-full text-left p-1 hover:bg-blue-600 hover:text-white cursor-pointer" onclick="document.querySelector('[data-target=\'core-value-page\']').click()">☆ 9F View Cafe</button>
+                    <button class="w-full text-left p-1 hover:bg-blue-600 hover:text-white cursor-pointer" onclick="document.querySelector('[data-target=\'target-page\']').click()">♡ 3040 육아맘</button>
+                    <button class="w-full text-left p-1 hover:bg-blue-600 hover:text-white cursor-pointer" onclick="document.querySelector('[data-target=\'poster-page\']').click()">🖨️ PR Posters</button>
+                </div>
+            </div>
 
-<!-- 1. Concept Page -->
-<div id="concept" class="page active">
-  <div class="typo-art">
-    <h1 class="serif-text">DEPARTMENT</h1>
-    <h2 class="script-text">Promotion</h2>
-  </div>
-  <div class="scrapbook-grid">
-    <div class="content-box">
-      <h2 class="section-title">Concept</h2>
-      <p>단순히 물건을 파는 곳을 넘어 상상이 현실이 되고 캐릭터 세계를 탐험하며 즐기는 <strong>체험형 공간</strong>과, 부모와 아이 모두 편안하게 머무를 수 있는 <strong>미식과 휴식이 공존하는 공간</strong>을 지향합니다.</p>
-      <ul style="padding-left: 20px;">
-        <li><strong>8F PLAY PLAZA:</strong> 체험형 패밀리 공간</li>
-        <li><strong>9F DINING & REST:</strong> 다이닝 & 릴렉스</li>
-      </ul>
-    </div>
-    <div class="polaroid">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #8fa3a3; color: #fff;">
-        SPACE<br>PROPOSAL
-      </div>
-      <div class="script-note">8F - 9F Renewal</div>
-    </div>
-  </div>
-</div>
+            <!-- Now Playing Widget -->
+            <div class="win-border absolute right-0 top-10 w-64 hidden lg:block bg-white z-10 shadow-lg transform rotate-2">
+                <div class="win-title-bar purple">
+                    <span>now playing</span>
+                    <div class="win-controls"><button>_</button><button>X</button></div>
+                </div>
+                <div class="p-3 bg-pink-50">
+                    <p class="font-bold text-sm mb-1">mom_is_exhausted.mp3</p>
+                    <p class="text-xs text-gray-500 mb-2">by Family Plaza</p>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="h-2 flex-1 bg-gray-300 border border-gray-500 rounded"><div class="h-full bg-pink-500 w-1/3"></div></div>
+                        <span class="text-xs">1:24</span>
+                    </div>
+                    <div class="flex justify-center gap-2">
+                        <button class="win-btn text-xs px-2 py-1">⏮</button>
+                        <button class="win-btn text-xs px-2 py-1">▶</button>
+                        <button class="win-btn text-xs px-2 py-1">⏭</button>
+                    </div>
+                </div>
+            </div>
 
-<!-- 2. Target Page -->
-<div id="target" class="page">
-  <div class="scrapbook-grid">
-    <div class="polaroid left-tilt">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #d4a5a5; color: #fff;">
-        For 3040<br>MOMS
-      </div>
-      <div class="script-note">Target Analysis</div>
-    </div>
-    <div class="content-box">
-      <h2 class="section-title">Target</h2>
-      <p><strong>핵심 타깃</strong><br>육아와 일상을 병행하며 쇼핑과 휴식의 니즈를 동시에 가진 30~40대 육아맘 전체</p>
-      <p><strong>타깃 특성</strong><br>백화점 방문 시 문화센터, 쇼핑, 식사, 장보기를 한 번에 해결하는 '목적형' 방문 비중이 높습니다. 유모차와 짐으로 인한 이동 제약 및 아이 케어로 인한 체력적·시간적·심리적 압박 완화가 핵심 니즈입니다.</p>
-    </div>
-  </div>
-</div>
+            <!-- Central Visual -->
+            <div class="flex flex-col items-center justify-center h-full pt-10 lg:pt-20">
+                <div class="relative w-full flex justify-center items-center">
+                    <!-- Ornaments -->
+                    <div class="absolute -top-10 left-1/4 floating text-4xl hidden md:block">🦋</div>
+                    <div class="absolute -bottom-10 right-1/4 floating text-5xl hidden md:block" style="animation-delay: 1s;">💿</div>
+                    <div class="absolute top-0 right-1/3 floating text-3xl hidden md:block" style="animation-delay: 0.5s;">✨</div>
+                    <div class="absolute top-20 left-10 w-20 h-20 bg-[url('https://placehold.co/80x80/ff66cc/ffffff?text=♡')] bg-cover border-2 border-black rounded-full floating hidden md:block" style="animation-delay: 1.5s;"></div>
+                    
+                    <!-- Title -->
+                    <div class="text-3d transform -rotate-3 hover:rotate-0 transition-transform duration-300 cursor-pointer" onclick="document.querySelector('[data-target=\'concept-page\']').click()">
+                        Department<br>Promotion
+                    </div>
+                </div>
+                <div class="mt-8 bg-white border-4 border-black px-6 py-2 transform rotate-2 shadow-[4px_4px_0_var(--y2k-purple)]">
+                    <p class="font-bold text-xl text-center">made 4 the family 👨‍👩‍👧‍👦</p>
+                    <p class="text-sm text-center mt-1 text-gray-600">8F Play Plaza & 9F Dining Rest Area</p>
+                </div>
+                
+                <div class="mt-12">
+                    <button class="win-btn bg-pink-200 text-black font-bold text-xl px-8 py-3" onclick="document.querySelector('[data-target=\'concept-page\']').click()">
+                        shop the space ➔
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<!-- 3. Core Value Page -->
-<div id="corevalue" class="page">
-  <div class="scrapbook-grid">
-    <div class="content-box">
-      <h2 class="section-title">Core Value</h2>
-      <p><strong>8F 쇼핑의 놀이화 (PLAY PLAZA)</strong><br>
-      360도 개방형 소파존 중심의 부모 맞춤형 안심 휴게 공간과 4대 캐릭터 체험존(타요, 티니핑, 디즈니, 포켓몬)을 제공합니다.</p>
-      <p><strong>9F 여유로운 미식과 조망 (DINING & REST)</strong><br>
-      통유리로 8층을 조망하며 즐기는 뷰 카페와 유모차 전용 주차장, 프라이빗 베이비 케어룸이 완비된 패밀리 푸드코트를 운영합니다.</p>
-    </div>
-    <div class="polaroid">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #c5b4e3; color: #fff;">
-        CORE<br>STRATEGY
-      </div>
-      <div class="script-note">Play & Rest</div>
-    </div>
-  </div>
-</div>
+        <!-- 2. Concept Page -->
+        <div id="concept-page" class="page-content max-w-4xl mx-auto">
+            <div class="win-border mb-8 shadow-xl">
+                <div class="win-title-bar">
+                    <span>SPACE_PROPOSAL.exe</span>
+                    <div class="win-controls"><button>_</button><button>□</button><button>X</button></div>
+                </div>
+                <div class="p-6 bg-white font-sans">
+                    <div class="border-b-4 border-pink-400 pb-4 mb-6">
+                        <h2 class="text-3xl font-bold font-['Pixelify_Sans'] text-pink-600">8F-9F FAMILY & LIFESTYLE CULTURE ZONE</h2>
+                        <p class="mt-2 text-gray-700 font-bold">단순히 물건을 파는 곳을 넘어 '상상이 현실이 되고 캐릭터 세계를 탐험하며 즐기는 체험형 공간'과 부모와 아이 모두 편안하게 머무를 수 있는 '미식과 휴식이 공존하는 공간'을 지향합니다.</p>
+                    </div>
 
-<!-- 4. Poster Page -->
-<div id="poster" class="page">
-  <div class="scrapbook-grid">
-    <div class="polaroid left-tilt">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #2a2a2a; color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.5em; line-height:1.2;">
-        Mom is Exhausted<br><span style="font-size: 0.6em; color: #fff;">But Kids Are Happy</span>
-      </div>
-      <div class="script-note">Teaser #1 & #2</div>
-    </div>
-    <div class="content-box">
-      <h2 class="section-title">Teaser Poster</h2>
-      <p><strong>MOM IS EXHAUSTED</strong></p>
-      <p>지친 엄마와 에너지가 넘치는 아이라는 상황을 직관적인 타이포그래피와 일러스트로 표현합니다.</p>
-      <p>"See you at the 8th floor!"라는 짧은 문구로 8층 공간에 대한 호기심과 기대감을 극대화하는 티징 홍보물입니다.</p>
-    </div>
-  </div>
-</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 8F -->
+                        <div class="win-border-inset p-4 bg-[#f0f8ff]">
+                            <h3 class="font-bold text-xl text-blue-600 border-b-2 border-blue-200 mb-3 font-['Pixelify_Sans'] flex justify-between">
+                                <span>🧸 8F PLAY PLAZA</span>
+                                <span>_□X</span>
+                            </h3>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex gap-2"><span class="text-blue-500">▶</span> <div><strong>중앙 휴게:</strong> 360도 소파에서 4개 캐릭터존의 아이를 한눈에 안심 케어</div></li>
+                                <li class="flex gap-2"><span class="text-blue-500">▶</span> <div><strong>타요존 (스포츠/신발):</strong> 바닥 트랙(WALK STEP→TURN→RUN) 활동형 피팅 공간</div></li>
+                                <li class="flex gap-2"><span class="text-blue-500">▶</span> <div><strong>티니핑존 (아동 의류):</strong> 옷과 액세서리를 직접 믹스앤매치하는 스타일링 체험</div></li>
+                                <li class="flex gap-2"><span class="text-blue-500">▶</span> <div><strong>디즈니/포켓몬존:</strong> 완구 롤플레잉, 나만의 티켓 발급 및 침구 촉감 힐링 체험</div></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 9F -->
+                        <div class="win-border-inset p-4 bg-[#fff0f5]">
+                            <h3 class="font-bold text-xl text-pink-600 border-b-2 border-pink-200 mb-3 font-['Pixelify_Sans'] flex justify-between">
+                                <span>☕ 9F DINING & REST</span>
+                                <span>_□X</span>
+                            </h3>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex gap-2"><span class="text-pink-500">▶</span> <div><strong>뷰 카페 (View Cafe):</strong> 통유리창 좌석에서 8F 플레이존의 아이를 살피며 커피를 즐기는 조망 카페</div></li>
+                                <li class="flex gap-2"><span class="text-pink-500">▶</span> <div><strong>푸드코트 패밀리존:</strong> 구름·별 프로젝션 연출, 연령별 퀵·패밀리 라운지 분리 운영</div></li>
+                                <li class="flex gap-2"><span class="text-pink-500">▶</span> <div><strong>유아 편의 시설:</strong> 유모차 전용 보관소(Stroller Parking) 및 수유/이유식 맞춤형 베이비 케어</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- 5. Shorts Page -->
-<div id="shorts" class="page">
-  <div class="scrapbook-grid">
-    <div class="content-box">
-      <h2 class="section-title">Short-form Video</h2>
-      <p><strong>아이 케어하면서 커피 한 잔</strong></p>
-      <p>엄마와 아이가 쇼핑하고 휴식하기까지의 실제 여정을 속도감 있게 보여줍니다. 유모차 동선, 앱을 통한 아기 의자 확인 등 유아 친화 서비스를 시각화합니다.</p>
-      <p>8층(놀이)과 9층(휴식)이 완벽하게 연계됨을 강조하여 타깃층의 공감과 방문을 유도합니다.</p>
-    </div>
-    <div class="polaroid">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #e0d4c8; color: #555;">
-        [ 9:16 Vertical ]<br><br>▶ PLAY
-      </div>
-      <div class="script-note">View Cafe Reels</div>
-    </div>
-  </div>
-</div>
+        <!-- 3. Target Page -->
+        <div id="target-page" class="page-content max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                
+                <div class="win-border w-full md:w-2/3 bg-white shadow-xl">
+                    <div class="win-title-bar purple">
+                        <span>target_analysis.doc</span>
+                        <div class="win-controls"><button>_</button><button>□</button><button>X</button></div>
+                    </div>
+                    <div class="p-6 font-sans">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="text-6xl">👩‍👧</div>
+                            <div>
+                                <h2 class="text-2xl font-bold text-purple-700">핵심 타깃 분석</h2>
+                                <p class="text-gray-600">30~40대 육아맘 전체</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 border border-purple-200 rounded mb-4">
+                            <h4 class="font-bold text-purple-800 mb-2">★ 타깃 페르소나 및 특성</h4>
+                            <p class="text-sm leading-relaxed text-gray-700">육아와 일상을 병행하며 <strong>쇼핑과 휴식의 니즈를 동시에 가진 고객층</strong>입니다. 백화점 방문 시 문화센터, 쇼핑, 식사, 장보기를 한 번에 해결하는 '목적형' 방문 비중이 높습니다.</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 border border-blue-200 rounded">
+                            <h4 class="font-bold text-blue-800 mb-2">★ 핵심 니즈 (Pain Points)</h4>
+                            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                                <li>유모차와 짐으로 인한 이동 제약 극복 필요</li>
+                                <li>아이 케어로 인한 체력적, 시간적, 심리적 압박 완화</li>
+                                <li>아이는 안전하게 놀고, 부모는 안심하고 쉴 수 있는 공간 요구</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-<!-- 6. Cards Page -->
-<div id="cards" class="page">
-  <div class="scrapbook-grid">
-    <div class="polaroid left-tilt">
-      <div class="tape"></div>
-      <div class="image-placeholder" style="background: #c6d8d3; color: #333;">
-        Slide 01 - 05<br><br>엄마의 휴식,<br>아이의 즐거움
-      </div>
-      <div class="script-note">Family Guide</div>
-    </div>
-    <div class="content-box">
-      <h2 class="section-title">Card News Guide</h2>
-      <p><strong>Family Shopping Guide</strong></p>
-      <p>문화센터 수업 후 어디 갈지 고민하는 육아맘을 위해 8, 9층의 상세 기능을 안내하는 정보 전달형 카드뉴스입니다.</p>
-      <p>8층을 '직접 경험하는 놀이터'로, 9층을 '함께 쉬는 시간'으로 정리하여 핵심 정보(수유실, 뷰 카페 등)를 한눈에 파악하고 저장하도록 유도합니다.</p>
-    </div>
-  </div>
-</div>
+                <!-- Fake Tamagotchi/Pet Widget -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="bg-pink-300 rounded-[50px] border-4 border-pink-500 w-48 h-60 p-4 relative shadow-2xl floating">
+                        <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black rounded-full"></div>
+                        <div class="bg-green-200 border-4 border-gray-600 w-full h-24 mt-4 rounded-lg flex items-center justify-center font-['Pixelify_Sans'] text-2xl">
+                            ( ´ ▽ ` )
+                        </div>
+                        <div class="flex justify-center gap-4 mt-6">
+                            <div class="w-4 h-4 bg-yellow-400 rounded-full border border-black cursor-pointer shadow-sm"></div>
+                            <div class="w-4 h-4 bg-yellow-400 rounded-full border border-black cursor-pointer shadow-sm"></div>
+                            <div class="w-4 h-4 bg-yellow-400 rounded-full border border-black cursor-pointer shadow-sm"></div>
+                        </div>
+                        <div class="text-center mt-4 text-xs font-bold text-pink-800 font-['Pixelify_Sans']">mom's best friend</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<script>
-  function showPage(pageId) {
-    // 모든 페이지 숨김
-    document.querySelectorAll('.page').forEach(page => {
-      page.classList.remove('active');
-    });
-    // 선택된 페이지 보이기
-    document.getElementById(pageId).classList.add('active');
-    
-    // 네비게이션 메뉴 스타일 업데이트
-    document.querySelectorAll('nav a').forEach(link => {
-      link.classList.remove('current');
-    });
-    // 클릭한 메뉴에 current 클래스 추가
-    event.target.classList.add('current');
-  }
-</script>
+        <!-- 4. Core Value Page -->
+        <div id="core-value-page" class="page-content max-w-5xl mx-auto">
+            <h2 class="text-center font-bold text-3xl mb-6 text-black font-['Pixelify_Sans']" style="text-shadow: 2px 2px 0 #fff;">♡ Core Value Strategy ♡</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 8F Core Value -->
+                <div class="win-border bg-white transform -rotate-1 hover:rotate-0 transition-transform shadow-lg">
+                    <div class="win-title-bar bg-blue-500">
+                        <span>8F_Play_Plaza.exe</span>
+                    </div>
+                    <div class="p-0">
+                        <div class="bg-blue-100 p-4 border-b-2 border-black">
+                            <h3 class="text-xl font-bold text-blue-800">쇼핑의 놀이화 (Shoppertainment)</h3>
+                        </div>
+                        <div class="p-4 grid grid-cols-2 gap-2 text-center text-sm font-bold">
+                            <div class="border-2 border-dashed border-gray-400 p-3 bg-white">
+                                <div class="text-3xl mb-1">🛋️</div>
+                                360도 안심 휴게
+                            </div>
+                            <div class="border-2 border-dashed border-gray-400 p-3 bg-white">
+                                <div class="text-3xl mb-1">🏃‍♂️</div>
+                                타요 러닝 피팅
+                            </div>
+                            <div class="border-2 border-dashed border-gray-400 p-3 bg-white">
+                                <div class="text-3xl mb-1">👗</div>
+                                티니핑 스타일링
+                            </div>
+                            <div class="border-2 border-dashed border-gray-400 p-3 bg-white">
+                                <div class="text-3xl mb-1">🧸</div>
+                                디즈니/포켓몬 체험
+                            </div>
+                        </div>
+                        <div class="bg-gray-200 p-2 text-center border-t-2 border-black">
+                            <button class="win-btn bg-pink-400 text-white font-bold text-sm w-full">view detailed map</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9F Core Value -->
+                <div class="win-border bg-white transform rotate-1 hover:rotate-0 transition-transform shadow-lg">
+                    <div class="win-title-bar bg-pink-500">
+                        <span>9F_Dining_Rest.exe</span>
+                    </div>
+                    <div class="p-0">
+                        <div class="bg-pink-100 p-4 border-b-2 border-black">
+                            <h3 class="text-xl font-bold text-pink-800">여유로운 미식과 조망</h3>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3 font-sans">
+                            <div class="win-border-inset p-3 bg-white flex items-center gap-3">
+                                <div class="text-4xl">☕</div>
+                                <div>
+                                    <h4 class="font-bold">통유리 뷰 카페</h4>
+                                    <p class="text-xs text-gray-600">8F 플레이존을 조망하며 즐기는 여유로운 휴식</p>
+                                </div>
+                            </div>
+                            <div class="win-border-inset p-3 bg-white flex items-center gap-3">
+                                <div class="text-4xl">🍽️</div>
+                                <div>
+                                    <h4 class="font-bold">패밀리 푸드코트</h4>
+                                    <p class="text-xs text-gray-600">유모차 전용 주차장, 베이비 케어룸, 맞춤형 패밀리석 완비</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-200 p-2 text-center border-t-2 border-black">
+                            <button class="win-btn bg-blue-400 text-white font-bold text-sm w-full">view menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Poster Page -->
+        <div id="poster-page" class="page-content h-full">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 min-h-[60vh]">
+                
+                <!-- Teaser Poster 1 -->
+                <div class="win-border bg-white p-2 shadow-2xl max-w-sm w-full transform -rotate-2">
+                    <div class="bg-blue-400 h-80 relative p-4 flex flex-col justify-center items-center text-center overflow-hidden border-2 border-black">
+                        <!-- Clouds -->
+                        <div class="absolute top-4 left-4 text-white opacity-50 text-4xl">☁️</div>
+                        <div class="absolute bottom-10 right-4 text-white opacity-50 text-5xl">☁️</div>
+                        
+                        <h2 class="text-[3rem] font-black text-red-600 leading-none" style="-webkit-text-stroke: 2px black;">MOM IS</h2>
+                        <h3 class="text-[2rem] font-['Pixelify_Sans'] text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 drop-shadow-md whitespace-nowrap italic">But Kids Are Happy</h3>
+                        <h2 class="text-[2.5rem] font-black text-red-600 leading-none mt-2" style="-webkit-text-stroke: 2px black;">EXHAUSTED</h2>
+                        
+                        <p class="absolute bottom-4 font-bold text-black bg-white/80 px-2 rounded">See you at the 8th floor!</p>
+                    </div>
+                    <div class="text-center mt-2 font-bold font-['Pixelify_Sans']">Teaser Poster #1</div>
+                </div>
+
+                <!-- Teaser Poster 2 -->
+                <div class="win-border bg-black p-2 shadow-2xl max-w-sm w-full transform rotate-2">
+                    <div class="h-80 relative p-4 flex flex-col justify-center items-center text-center border-2 border-gray-600">
+                        <div class="flex justify-between w-full px-4 text-2xl">
+                            <span class="text-purple-400">👽</span> <span class="text-blue-400">✨</span> <span class="text-yellow-400">⭐</span>
+                        </div>
+                        <h2 class="text-[2.5rem] font-black text-blue-400 leading-none mt-4">MOM IS</h2>
+                        <h2 class="text-[2rem] font-black text-pink-400 leading-none mb-2">EXHAUSTED</h2>
+                        <h3 class="text-[1.8rem] font-['Pixelify_Sans'] text-yellow-300 italic">But Kids Are Happy</h3>
+                        <div class="flex justify-around w-full mt-4 text-3xl">
+                            <span class="text-pink-500 animate-bounce">🐰</span> 
+                            <span class="text-blue-500 animate-bounce" style="animation-delay: 0.2s;">🐵</span>
+                            <span class="text-white">👻</span>
+                        </div>
+                        <p class="absolute bottom-4 font-bold text-blue-300">See you at the 8th floor!</p>
+                    </div>
+                    <div class="text-center mt-2 font-bold text-white font-['Pixelify_Sans']">Teaser Poster #2</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 6. Card News Page -->
+        <div id="card-news-page" class="page-content max-w-5xl mx-auto">
+            <div class="win-border bg-white p-4 shadow-lg mb-8">
+                <div class="win-title-bar dark mb-4">
+                    <span>FAMILY_SHOPPING_GUIDE.zip</span>
+                    <div class="win-controls"><button>_</button><button>□</button><button>X</button></div>
+                </div>
+                
+                <div class="text-center mb-6">
+                    <p class="bg-yellow-200 inline-block px-4 py-1 font-bold border-2 border-black border-dashed">문화센터 수업 후의 동선 고민 해결! 8F-9F 완전 정복 가이드</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Card 1 -->
+                    <div class="border-2 border-black p-3 bg-pink-50 text-center flex flex-col h-64 hover:bg-pink-100 transition-colors">
+                        <div class="text-xs text-gray-500 mb-1">Slide 01</div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="text-4xl mb-2">🤔</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2">문센 끝나고<br>어디 갈지<br>또 고민되셨죠?</h4>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="border-2 border-black p-3 bg-blue-50 text-center flex flex-col h-64 hover:bg-blue-100 transition-colors relative top-0 lg:top-4">
+                        <div class="text-xs text-gray-500 mb-1">Slide 02</div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="text-4xl mb-2">🎢</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2">직접 경험하는<br>놀이터 (8F)</h4>
+                            <p class="text-xs text-gray-600">RUN, STYLE, PLAY, TOUCH</p>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="border-2 border-black p-3 bg-purple-50 text-center flex flex-col h-64 hover:bg-purple-100 transition-colors relative top-0 lg:top-8">
+                        <div class="text-xs text-gray-500 mb-1">Slide 03</div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="text-4xl mb-2">🛌</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2">이제 함께<br>쉬는 시간 (9F)</h4>
+                            <p class="text-xs text-gray-600">EAT, REST, VIEW</p>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="border-2 border-black p-3 bg-green-50 text-center flex flex-col h-64 hover:bg-green-100 transition-colors relative top-0 lg:top-4">
+                        <div class="text-xs text-gray-500 mb-1">Slide 04</div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="text-4xl mb-2">🍼</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2">아이와 함께여서<br>편한 맞춤 시설</h4>
+                            <p class="text-xs text-gray-600">수유실, 유모차 주차장</p>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="border-2 border-black p-3 bg-yellow-50 text-center flex flex-col h-64 hover:bg-yellow-100 transition-colors">
+                        <div class="text-xs text-gray-500 mb-1">Slide 05</div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="text-4xl mb-2">💖</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2">엄마의 휴식,<br>아이의 즐거움</h4>
+                            <p class="text-xs font-bold text-pink-600 mt-2">저장하고 방문하세요!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Shorts Page -->
+        <div id="shorts-page" class="page-content flex justify-center items-center min-h-[60vh]">
+            <!-- Mobile Phone Mockup -->
+            <div class="relative w-[300px] h-[600px] bg-pink-200 border-[12px] border-pink-400 rounded-[40px] shadow-2xl flex flex-col overflow-hidden">
+                <!-- Phone Top -->
+                <div class="h-8 bg-pink-400 w-full flex justify-center items-center gap-2">
+                    <div class="w-12 h-2 bg-pink-600 rounded-full"></div>
+                    <div class="w-2 h-2 bg-pink-600 rounded-full"></div>
+                </div>
+                
+                <!-- Screen Content (Shorts Video Concept) -->
+                <div class="flex-1 bg-black relative flex flex-col">
+                    <!-- Top overlay -->
+                    <div class="absolute top-4 left-4 z-10 text-white drop-shadow-md">
+                        <h2 class="font-bold text-lg">9F VIEW CAFE ☕</h2>
+                    </div>
+                    
+                    <!-- Video Area Fake -->
+                    <div class="flex-1 flex flex-col justify-center items-center text-center p-6 bg-gradient-to-b from-gray-800 to-black">
+                        <div class="text-6xl mb-4 animate-pulse">👩‍👧</div>
+                        <h3 class="text-2xl font-bold text-white mb-2 leading-tight font-['Pixelify_Sans']">아이 케어하면서<br>커피 한잔</h3>
+                        <p class="text-pink-300 font-bold bg-white/10 p-2 rounded">그동안 엄마는 9층 카페에서<br>아이 보며 커피 한잔의 여유~</p>
+                    </div>
+
+                    <!-- Right side buttons -->
+                    <div class="absolute right-2 bottom-20 flex flex-col gap-4 text-white text-2xl z-10">
+                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-pink-500">❤️</span><span class="text-xs mt-1">10.2K</span></div>
+                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">💬</span><span class="text-xs mt-1">128</span></div>
+                        <div class="flex flex-col items-center"><span class="cursor-pointer hover:text-gray-300">🔗</span><span class="text-xs mt-1">Share</span></div>
+                    </div>
+
+                    <!-- Bottom caption -->
+                    <div class="absolute bottom-4 left-4 right-16 text-white z-10">
+                        <p class="text-sm font-bold">@department_space</p>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-2">유모차 전용 동선부터 스마트폰 앱 아기 의자 확인까지! 8층 체험존과 9층 뷰카페의 완벽한 연계 ✨ #육아맘 #백화점나들이</p>
+                    </div>
+                    
+                    <!-- Progress bar -->
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-600 z-10">
+                        <div class="h-full bg-pink-500 w-1/2 relative">
+                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Taskbar (Footer) -->
+    <footer class="h-10 bg-[var(--win95-bg)] border-t-2 border-white shadow-[0_-1px_0_rgba(0,0,0,0.2)] flex items-center px-1 justify-between z-30 fixed bottom-0 w-full">
+        <div class="flex items-center gap-1 h-full py-1">
+            <button class="win-btn font-bold flex items-center gap-1 px-2 h-full" onclick="document.querySelector('[data-target=\'home-page\']').click()">
+                <span class="text-pink-600 text-lg">✦</span> <span class="font-['Pixelify_Sans'] text-base hidden sm:inline">start</span>
+            </button>
+            <div class="hidden md:flex gap-1 border-l-2 border-gray-500 pl-2 ml-1 h-full py-0.5">
+                <button class="win-btn px-2 py-0 text-xs font-bold bg-white border-inset active flex items-center gap-1">
+                    <span class="text-blue-500">📁</span> SPACE PR
+                </button>
+            </div>
+        </div>
+        
+        <div class="win-border-inset px-2 py-1 flex items-center gap-2 text-xs font-bold bg-[var(--win95-bg)] h-[28px] mr-1">
+            <span class="hidden sm:inline text-pink-600">💌 new message(1)</span>
+            <div class="border-l border-gray-500 h-4 mx-1 hidden sm:block"></div>
+            <span>🔊</span>
+            <span id="clock" class="min-w-[70px] text-right font-sans">10:30 PM</span>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab Navigation Logic
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const pages = document.querySelectorAll('.page-content');
+
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active state from all pages and buttons
+                    pages.forEach(page => page.classList.remove('active'));
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Add visual inset/active state to clicked button
+                    btn.classList.add('active');
+
+                    // Show target page
+                    const targetId = btn.getAttribute('data-target');
+                    const targetPage = document.getElementById(targetId);
+                    if (targetPage) {
+                        targetPage.classList.add('active');
+                        // Retrigger animation
+                        targetPage.style.animation = 'none';
+                        targetPage.offsetHeight; // trigger reflow
+                        targetPage.style.animation = null; 
+                    }
+                });
+            });
+
+            // Clock Logic
+            function updateClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                
+                document.getElementById('clock').textContent = `${hours}:${minutes} ${ampm}`;
+            }
+            
+            setInterval(updateClock, 1000);
+            updateClock();
+            
+            // Window Close button mock functionality (Close to Home)
+            const closeButtons = document.querySelectorAll('.win-controls button:last-child');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelector('[data-target="home-page"]').click();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
